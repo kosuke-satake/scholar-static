@@ -1,0 +1,663 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* 
+=================================
+GLOBAL STYLES
+=================================
+This section defines the basic styles for the entire website, including the default font.
+*/
+
+/* The 'Inter' font is used as the primary font for the body. */
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
+}
+
+/* Add smooth transitions to key elements for theme switching */
+body, header, footer, .timeline-content, .modal-content, .hamburger-line,
+.bg-gray-50, .bg-white, .bg-gray-100, .bg-gray-800, .bg-gray-900,
+.text-gray-400, .text-gray-500, .text-gray-700, .text-gray-900,
+.dark .bg-gray-800, .dark .bg-gray-900 {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* 
+=================================
+ACCESSIBILITY: FOCUS STYLES
+=================================
+*/
+/* 
+  Add a visible focus ring to interactive elements for keyboard navigation.
+  We use :focus-visible to avoid showing the ring on mouse clicks.
+*/
+a:focus-visible,
+button:focus-visible,
+.clickable-modal:focus-visible {
+    outline: 2px solid #4f46e5; /* indigo-600 */
+    outline-offset: 2px;
+    border-radius: 0.375rem; /* rounded-md */
+}
+
+/* For elements inside a dark-mode container */
+.dark a:focus-visible,
+.dark button:focus-visible,
+.dark .clickable-modal:focus-visible {
+    outline-color: #818cf8; /* indigo-400 */
+}
+
+/* Ensure that elements without a default outline get one on focus */
+.clickable-modal {
+    outline: none;
+}
+
+
+/* 
+=================================
+NAVIGATION STYLES
+=================================
+*/
+
+/* Animate mobile menu panel */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+#mobile-menu.is-open {
+    max-height: 500px; /* Adjust as needed */
+}
+
+/* Styles for the active navigation link in light mode. */
+.nav-link.active {
+    color: #4f46e5; /* indigo-600 */
+    font-weight: 700;
+}
+/* Styles for the active navigation link in dark mode. */
+.dark .nav-link.active {
+    color: #818cf8; /* indigo-400 */
+}
+
+/* 
+=================================
+PAGE SECTION STYLES
+=================================
+This section controls the visibility and animation of the main content sections (Home, Biography, etc.).
+*/
+
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pageFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+    }
+}
+
+@keyframes bounce-slow {
+    0%, 100% {
+        transform: translateY(-15%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 2.5s infinite;
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+}
+
+/* 
+  Fix for smooth hover animations:
+  The global transition rule for .bg-* classes excludes 'transform', causing abrupt jumps.
+  This class overrides it to ensure 'transform' is transitioned smoothly.
+*/
+.hover-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.hover-card:hover {
+    transform: translateY(-0.25rem); /* -translate-y-1 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+}
+
+.dark .hover-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* By default, all page sections are hidden. */
+.page-section {
+    display: none;
+}
+/* The 'active' class is used to show the current page. */
+.page-section.active {
+    display: block;
+}
+
+
+/* 
+=================================
+GENERIC ANIMATIONS
+=================================
+*/
+
+/* Class for elements that should fade in when they are scrolled into view. */
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Apply a small delay based on the animation-delay utility class from Tailwind */
+    transition-delay: var(--animation-delay, 0s);
+}
+
+/* The 'is-visible' class is added by JavaScript to trigger the fade-in effect. */
+.fade-in-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* 
+=================================
+TIMELINE STYLES (BIOGRAPHY)
+=================================
+This section styles the interactive timeline on the Biography page.
+*/
+
+/* Keyframes for desktop animations */
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* The main container for the timeline. */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+/* The vertical line that runs through the center of the timeline. */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #e0e7ff; /* indigo-100 */
+    top: 0;
+    bottom: 0;
+    left: 1.25rem; /* 20px */
+    margin-left: -3px;
+    z-index: 1;
+}
+.dark .timeline-container::after {
+    background-color: #374151; /* gray-700 */
+}
+
+/* Change top dot to a downward-pointing arrow and position it correctly. */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem; /* Mobile */
+    top: -1rem;
+    transform: translateX(-50%);
+    width: 1.0rem;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 25px solid #e0e7ff; /* indigo-100 */
+    z-index: 2;
+}
+.dark .timeline-container::before {
+    border-bottom-color: #374151; /* gray-700 */
+}
+
+
+/* Individual items within the timeline. */
+.timeline-item {
+    position: relative;
+    padding-left: 3rem; /* Space for the dot */
+    margin-bottom: 2rem;
+    z-index: 2;
+}
+
+/* The circular dot on the timeline bar for each item. */
+.timeline-dot {
+    position: absolute;
+    left: 1.25rem; /* 20px */
+    top: 1.0rem; /* Align with text */
+    transform: translateX(-50%);
+    background-color: #4f46e5; /* indigo-600 */
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 4px solid #eef2ff; /* indigo-50 */
+    z-index: 10;
+}
+.dark .timeline-dot {
+    background-color: #818cf8; /* indigo-400 */
+    border-color: #1f2937; /* gray-800 */
+}
+
+/* The content box for each timeline item. */
+.timeline-content {
+    background-color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.dark .timeline-content {
+    background-color: #1f2937; /* gray-800 */
+    box-shadow: none;
+    border-width: 1px;
+    border-color: #374151; /* gray-700 */
+}
+
+/* Hover effect for the timeline content box in light mode. */
+.timeline-content:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-0.25rem);
+}
+.dark .timeline-content:hover {
+    background-color: #374151; /* gray-700 */
+    transform: translateY(-0.25rem); /* 3D lift effect */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
+    border-color: #6b7280; /* gray-500 - lighter border */
+}
+
+/* 
+On larger screens (desktops), the timeline becomes a two-column layout.
+*/
+@media (min-width: 768px) {
+    /* The vertical line and arrow are centered */
+    /* .timeline-container::after, .timeline-container::before {
+        left: 50%;
+        transform: translateX(-50%);
+    } */
+
+    .timeline-container::after {
+        left:50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-container::before {
+        left: 49.65%;
+        transform: translateX(-50%);
+    }
+
+    /* General timeline item styling for desktop */
+    .timeline-item {
+        width: 50%;
+        margin-bottom: 3rem;
+        padding: 0; /* Reset mobile padding */
+    }
+    
+    /* Odd-numbered items are on the left side of the timeline */
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 3rem; /* Space for the dot and gap */
+    }
+    
+    /* Even-numbered items are on the right side of the timeline */
+    .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 3rem; /* Space for the dot and gap */
+    }
+
+    /* Content alignment for left/right items */
+    .timeline-item:nth-child(odd) .timeline-content {
+        text-align: right;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: left;
+    }
+
+    /* Position dots centrally on the timeline line */
+    .timeline-dot {
+        position: absolute; /* Absolute positioning relative to timeline-item */
+        top: 1rem; /* Align with text */
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        z-index: 10;
+        background-color: #4f46e5; /* indigo-600 */
+        border: 4px solid #eef2ff; /* indigo-50 */
+    }
+    .dark .timeline-dot {
+        background-color: #818cf8; /* indigo-400 */
+        border-color: #1f2937; /* gray-800 */
+    }
+
+    /* Dot position for items on the left side (dot is on the right of the item, on the center line) */
+    .timeline-item:nth-child(odd) .timeline-dot {
+        right: -0.55rem; /* Half the width of the dot to center it on the line */
+        left: auto; /* Override previous left property */
+        transform: translateX(0); /* Remove mobile transform */
+    }
+
+    /* Dot position for items on the right side (dot is on the left of the item, on the center line) */
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -0.95rem; /* Half the width of the dot to center it on the line */
+        transform: translateX(0); /* Remove mobile transform */
+    }
+
+    /* Apply left/right animations */
+    .timeline-item.fade-in-on-scroll:nth-child(odd) {
+        transform: translateX(-30px);
+    }
+    .timeline-item.fade-in-on-scroll.is-visible:nth-child(odd) {
+        transform: translateX(0px);
+    }
+
+    .timeline-item.fade-in-on-scroll:nth-child(even) { /* Added initial state for even items */
+        transform: translateX(30px);
+    }
+    .timeline-item.fade-in-on-scroll.is-visible:nth-child(even) {
+        transform: translateX(0px);
+    }
+}
+
+/* 
+=================================
+MODAL STYLES
+=================================
+This section styles the pop-up modal window used to display more details.
+*/
+
+/* The dark overlay that covers the entire screen behind the modal. */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex; /* Use flex for centering */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none; /* Not interactive when hidden */
+    transition: opacity 0.3s ease-out;
+}
+
+/* The main content area of the modal. */
+.modal-content {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition-delay: 0.05s; /* Content appears slightly after overlay */
+}
+
+/* Styles for when the modal is open */
+.modal-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto; /* Make it interactive */
+}
+
+.modal-overlay.is-open .modal-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* The modal overlay in dark mode. */
+.dark .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* The modal content in dark mode. */
+.dark .modal-content {
+    background-color: #1f2937; /* gray-800 */
+}
+
+/* The close button (the 'X') in the top-right corner of the modal. */
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    color: #9ca3af; /* gray-400 */
+}
+.modal-close-btn:hover {
+    color: #1f2937; /* gray-800 */
+}
+/* The close button in dark mode. */
+.dark .modal-close-btn {
+    color: #6b7280; /* gray-500 */
+}
+.dark .modal-close-btn:hover {
+    color: #f3f4f6; /* gray-100 */
+}
+
+/* 
+=================================
+BACK TO TOP BUTTON
+=================================
+*/
+#back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 
+=================================
+HAMBURGER MENU
+=================================
+*/
+.hamburger-button {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: #374151; /* gray-700 */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+.dark .hamburger-line {
+    background-color: #d1d5db; /* gray-300 */
+}
+
+/* Animate to 'X' */
+.hamburger-button.is-active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-button.is-active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-button.is-active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 
+=================================
+NEWS SCROLL CONTAINER
+=================================
+*/
+.news-scroll-container {
+    max-height: 400px; /* Adjust this value as needed */
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Basic scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #a5b4fc #e0e7ff;
+}
+.dark .news-scroll-container {
+    scrollbar-color: #4f46e5 #374151;
+}
+
+/* Modern scrollbar styling for Webkit browsers (Chrome, Safari) */
+.news-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+.news-scroll-container::-webkit-scrollbar-track {
+    background: #e0e7ff;
+    border-radius: 4px;
+}
+.dark .news-scroll-container::-webkit-scrollbar-track {
+    background: #374151;
+}
+.news-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #a5b4fc;
+    border-radius: 4px;
+    border: 2px solid #e0e7ff;
+}
+.dark .news-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #4f46e5;
+    border-color: #374151;
+}
+.news-scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #818cf8;
+}
+.dark .news-scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #6366f1;
+}
+
+/* Force profile image to be circular (override potential conflicts) */
+.page-section#home img[alt*="Portrait of"] {
+    border-radius: 50% !important;
+}
+
+
+/* 
+=================================
+PUBLICATION FILTER & SEARCH STYLES
+=================================
+*/
+.filter-btn {
+    background-color: #eef2ff; /* indigo-50 */
+    color: #4338ca; /* indigo-800 */
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* rounded-full */
+    font-weight: 500;
+    font-size: 0.875rem; /* text-sm */
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+}
+.dark .filter-btn {
+    background-color: #3730a3; /* indigo-800 */
+    color: #e0e7ff; /* indigo-100 */
+}
+
+.filter-btn:hover {
+    background-color: #e0e7ff; /* indigo-100 */
+    transform: translateY(-2px);
+}
+.dark .filter-btn:hover {
+    background-color: #4338ca; /* indigo-700 */
+}
+
+.filter-btn.is-active {
+    background-color: #4f46e5; /* indigo-600 */
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.dark .filter-btn.is-active {
+    background-color: #818cf8; /* indigo-400 */
+    color: #1e1b4b; /* indigo-950 */
+}
+
+.search-input {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 1rem;
+    color: #111827; /* gray-900 */
+    width: 100%;
+}
+.dark .search-input {
+    background-color: #1f2937; /* gray-800 */
+    border-color: #4b5563; /* gray-600 */
+    color: #f9fafb; /* gray-50 */
+}
+.search-input::placeholder {
+    color: #6b7280; /* gray-500 */
+}
+.dark .search-input::placeholder {
+    color: #9ca3af; /* gray-400 */
+}
+.search-input:focus {
+    outline: none;
+    border-color: #4f46e5; /* indigo-600 */
+    box-shadow: 0 0 0 2px #c7d2fe; /* indigo-200 */
+}
+.dark .search-input:focus {
+    border-color: #818cf8; /* indigo-400 */
+    box-shadow: 0 0 0 2px #3730a3; /* indigo-800 */
+}
+
+/* 
+=================================
+CONTACT ITEM HOVER STYLES
+=================================
+*/
+.contact-item-hover {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.contact-item-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .contact-item-hover:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Academic Portfolio...</title>
+    <!-- Favicon -->
+    <!-- For a custom favicon, place your favicon.ico or favicon.png in the root directory -->
+    <link rel="icon" type="image/x-icon" href="assets/img/icons/favicon.ico">
+    
+    <!-- SEO & Social Sharing (Populated by JS) -->
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="">
+
+    <!-- Load Tailwind CSS (Local Build) -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Dark Mode Initializer -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <!-- 
+      =================================
+      HEADER & NAVIGATION
+      =================================
+    -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm dark:bg-gray-800/95 dark:border-b dark:border-gray-700">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Left: Name/Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" id="header-name" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
+                        <!-- Name is injected by JS -->
+                    </a>
+                </div>
+                
+                <!-- Center: Desktop Navigation Links -->
+                <div id="desktop-nav-links" class="hidden md:flex md:items-center md:space-x-8">
+                    <!-- Desktop navigation links are injected by JS -->
+                </div>
+                
+                <!-- Right: Dark Mode Toggle & Mobile Menu Button -->
+                <div class="flex items-center gap-2">
+                    <button id="lang-toggle" class="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm">
+                        EN
+                    </button>
+                    <button id="dark-mode-toggle" class="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span id="sun-icon" class="hidden" data-lucide="sun"></span>
+                        <span id="moon-icon" class="hidden" data-lucide="moon"></span>
+                    </button>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="hamburger-button" aria-expanded="false" aria-label="Open main menu">
+                            <span class="sr-only">Open main menu</span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden border-t border-gray-200 dark:border-gray-700">
+            <div id="mobile-nav-links" class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <!-- Mobile navigation links are injected by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- 
+      =================================
+      MAIN CONTENT
+      =================================
+    -->
+    <main>
+        <!-- All sections are dynamically injected here by JS -->
+    </main>
+
+    <!-- 
+      =================================
+      FOOTER
+      =================================
+    -->
+    <footer class="bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:pr-32">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <p id="footer-copyright" class="text-sm">
+                    <!-- Copyright injected by JS -->
+                </p>
+                <div id="footer-social" class="flex space-x-6 mt-4 sm:mt-0">
+                    <!-- Social links injected by JS -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+      =================================
+      BACK TO TOP BUTTON
+      =================================
+    -->
+    <button id="back-to-top" class="hidden fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all opacity-0 translate-y-4">
+        <span class="sr-only">Go to top</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mx-auto">
+            <path d="m5 12 7-7 7 7"/>
+            <path d="M12 19V5"/>
+        </svg>
+    </button>
+    
+    <!-- 
+      =================================
+      MODAL
+      =================================
+    -->
+    <div id="item-modal" class="modal-overlay modal-hidden">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">
+                <span data-lucide="x" class="w-6 h-6"></span>
+            </button>
+            <span id="item-modal-date" class="block text-sm font-semibold text-indigo-600 dark:text-indigo-400"></span>
+            <h3 id="item-modal-title" class="text-2xl font-semibold text-gray-900 dark:text-white mt-1"></h3>
+            <p id="item-modal-subtitle" class="text-gray-600 dark:text-gray-400 mt-1"></p>
+            <div id="item-modal-description" class="text-gray-700 dark:text-gray-300 mt-4 space-y-4"></div>
+            <div id="item-modal-links" class="mt-4 flex flex-wrap gap-4"></div>
+        </div>
+    </div>
+
+    <!-- 
+      =================================
+      JAVASCRIPT
+      =================================
+    -->
+    <!-- Load Lucide icons (Local) - Defer loading to prevent blocking render -->
+    <script src="js/lucide.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/data.ja.js"></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

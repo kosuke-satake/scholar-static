@@ -1,0 +1,346 @@
+const portfolioDataJa = {
+    // =================================
+    // LAYOUT CONTROL
+    // This array controls the sections and their order on the page.
+    // To remove a section, just delete its line from this array.
+    // To reorder sections, just move the lines around.
+    // =================================
+    layout: [
+        { id: 'home',       nav: 'ホーム',         renderer: 'renderHero',       dataKey: 'personal'     },
+        { id: 'biography',  nav: '略歴',    renderer: 'renderTimeline',   dataKey: 'biography'    },
+        { id: 'research',   nav: '研究',     renderer: 'renderCardGrid',   dataKey: 'research'     },
+        { id: 'projects',   nav: 'プロジェクト',     renderer: 'renderCardGrid',   dataKey: 'projects'     },
+        { id: 'publications', nav: '論文', renderer: 'renderItemList',   dataKey: 'publications' },
+        { id: 'teaching',   nav: '教育',     renderer: 'renderTeachingList',   dataKey: 'teaching'     },
+        { id: 'resources',  nav: 'リソース',    renderer: 'renderResourceList',   dataKey: 'resources'    },
+        { id: 'contact',    nav: '連絡先',      renderer: 'renderContactForm',dataKey: 'contact'      }
+    ],
+
+    // =================================
+    // UI TEXT & LABELS
+    // =================================
+    uiText: {
+        hero: {
+            quickFacts: "基本情報",
+            news: "最新ニュース"
+        },
+        publications: {
+            filters: {
+                all: "すべて",
+                searchPlaceholder: "論文を検索..."
+            }
+        },
+        projects: {
+            filters: {
+                all: "すべて",
+                searchPlaceholder: "プロジェクトを検索..."
+            }
+        },
+        timeline: {
+            readMore: "詳細を見る..."
+        },
+        teaching: {
+            role: "役割:",
+            semesters: "学期:"
+        },
+        resources: {
+            viewButton: "表示",
+            downloadButton: "ダウンロード"
+        },
+        footer: {
+            rights: "All rights reserved."
+        }
+    },
+
+    // =================================
+    // SEO & METADATA
+    // =================================
+    seo: {
+        description: "ジェーン・ドウ博士の学術ポートフォリオ - コンピュータサイエンス助教。HCI、機械学習、可視化を研究しています。",
+        ogTitle: "ジェーン・ドウ博士 - 学術ポートフォリオ",
+        ogDescription: "ジェーン・ドウ博士の学術ポートフォリオ。HCI、機械学習、可視化を研究しています。",
+        ogImage: "assets/img/og-image.svg",
+        ogUrl: "#",
+        twitterCard: "summary_large_image"
+    },
+
+    // =================================
+    // PERSONAL INFORMATION
+    // =================================
+    personal: {
+        name: "ジェーン・ドウ博士",
+        title: "コンピュータサイエンス助教",
+        profileImage: "assets/img/profile.svg",
+        introduction: "私のポートフォリオへようこそ。私は[大学名]の研究者で、ヒューマンコンピュータインタラクション、機械学習、データ可視化を専門としています。私の研究は、人間の能力を拡張し、情報への公平なアクセスを促進する知能システムの構築を目指しています。",
+        // Stats for the highlight reel in the hero section
+        stats: [
+            { value: "50+", label: "論文数" },
+            { value: "1500+", label: "被引用数" },
+            { value: "10+", label: "研究歴（年）" },
+            { value: "20+", label: "指導学生数" }
+        ],
+        // Quick facts or highlights for the home page
+        quickFacts: [
+            { text: "人間とAIの協調に情熱", icon: "users" },
+            { text: "説明可能なAI (XAI) の専門家", icon: "brain-circuit" },
+            { text: "倫理的なデータ実践の提唱者", icon: "shield-check" },
+            { text: "アウトドア愛好家 & 写真家", icon: "camera" }
+        ],
+        links: [
+            { name: "CVをダウンロード", icon: "download", url: "#" },
+            { name: "Google Scholar", icon: "book-open", url: "#" },
+            { name: "LinkedIn", icon: "linkedin", url: "#" }
+        ],
+        // Social links for the footer
+        social: [
+            { name: "Twitter", icon: "twitter", url: "#" },
+            { name: "LinkedIn", icon: "linkedin", url: "#" },
+            { name: "GitHub", icon: "github", url: "#" }
+        ]
+    },
+
+    // =================================
+    // NEWS & UPDATES
+    // =================================
+    news: {
+        title: "ニュース & 更新情報",
+        subtitle: "最近の発表や成果。",
+        items: [
+            { date: "2025年10月", content: "私たちの論文「[論文タイトル]」が[会議名]に採択されました！" },
+            { date: "2025年9月", content: "[イベント名]で[トピック]について講演を行います。" },
+            { date: "2025年7月", content: "[プロジェクト名]に関する研究が[出版物/ニュースメディア]で取り上げられました。" },
+            { date: "2025年5月", content: "HCI分野への貢献により[賞の名前]を受賞しました。" }
+        ]
+    },
+
+    // =================================
+    // BIOGRAPHY TIMELINE
+    // =================================
+    biography: {
+        title: "略歴",
+        subtitle: "私の学術的および専門的な経歴の概要。",
+        timeline: [
+            {
+                date: "2022 - 現在",
+                title: "助教",
+                subtitle: "[大学名], [都市, 州]",
+                description: "<p>[大学名]にて、[あなたの研究室名]を主宰し、[研究分野]に焦点を当てています。大学院生や学部生を指導し、[コース1]や[コース2]の講義を担当しています。</p><p class='mt-4'>現在の研究プロジェクトには、[資金源]の支援を受けた[プロジェクト1]や[プロジェクト2]があります。</p>"
+            },
+            {
+                date: "2020 - 2022",
+                title: "博士研究員",
+                subtitle: "[前職の大学名], [都市, 州]",
+                description: "<p>[研究室名]にて[アドバイザー名]のもと、ポスドクとして[プロジェクト名]に従事しました。この研究成果として[数]本の論文を発表し、[会議名]で最優秀論文賞を受賞しました。</p><p class='mt-4'>また、[ワークショップ名]を共同開催し、数名の若手学生の指導も行いました。</p>"
+            },
+            {
+                date: "2016 - 2020",
+                title: "コンピュータサイエンス博士号",
+                subtitle: "[大学院大学名], [都市, 州]",
+                description: "<p>博士課程では[論文テーマ]に焦点を当てました。[アドバイザー名]の指導を受け、[フェローシップ名]の支援をいただきました。</p><p class='mt-4'>私の博士論文「[博士論文タイトル]」は、[分野]における新しいモデルを提案し、[賞の名前]を受賞しました。</p>",
+                extra: '博士論文: "Title of Your Dissertation"'
+            },
+        ]
+    },
+
+    // =================================
+    // SKILLS
+    // =================================
+    skills: {
+        title: "スキル & 専門知識",
+        subtitle: "技術的および学術的なスキルの概要。",
+        categories: [
+            {
+                title: "プログラミング言語",
+                items: ["JavaScript", "Python", "Java", "C++", "SQL", "R"]
+            },
+            {
+                title: "技術 & フレームワーク",
+                items: ["React", "Node.js", "D3.js", "TensorFlow", "PyTorch", "WebGL"]
+            },
+            {
+                title: "方法論",
+                items: ["ユーザー中心設計", "アジャイル開発", "データ分析", "統計モデリング"]
+            }
+        ]
+    },
+    
+    // =================================
+    // RESEARCH INTERESTS
+    // =================================
+    research: {
+        title: "研究分野",
+        subtitle: "私の研究は、テクノロジーと人間中心設計の交差点を探索しています。主な焦点は以下の通りです：",
+        items: [
+            {
+                title: "ヒューマンコンピュータインタラクション (HCI)",
+                icon: "users",
+                summary: "直感的で効率的、かつ使い心地の良い新しいインタラクティブシステムを設計・評価します。",
+                description: "<p>HCIにおけるあなたの研究の詳細をここに記述します。</p><p class='mt-4'>デザイン哲学、使用する具体的な手法（例：ユーザー中心設計、参加型デザイン）、およびHCI研究の究極の目標などを含めることができます。</p>"
+            },
+            {
+                title: "機械学習",
+                icon: "brain-circuit",
+                summary: "解釈可能なMLモデルを開発し、複雑な人間の行動や社会現象を理解するために応用します。",
+                description: "<p>機械学習研究について詳しく説明するスペースです。</p><p class='mt-4'>構築するモデルの種類（例：ディープラーニング、強化学習）、解釈可能性や公平性への焦点、具体的な応用分野（例：ヘルスケア、教育）について議論できます。</p>"
+            },
+            {
+                title: "データ可視化",
+                icon: "bar-chart-3",
+                summary: "人々が複雑なデータを探索、理解、伝達するのを助けるインタラクティブな可視化を作成します。",
+                description: "<p>データ可視化の研究について展開してください。</p><p class='mt-4'>情報可視化（InfoVis）や科学的可視化（SciVis）に関する研究、新しい可視化技術の開発、または可視化が人間の知覚や意思決定にどのように影響するかについての研究を詳述します。</p>"
+            }
+        ]
+    },
+
+    // =================================
+    // PROJECTS
+    // =================================
+    projects: {
+        title: "プロジェクト",
+        subtitle: "私が開発したソフトウェアプロジェクトとツールのセレクション。",
+        items: [
+            {
+                title: "インタラクティブデータエクスプローラー",
+                icon: "database-zap",
+                summary: "大規模なデータセットを対話的に探索・可視化するためのWebベースのツール。",
+                description: "<p>プロジェクトの詳細、使用技術、ライブデモやソースコードへのリンク。</p>",
+                tags: ["Web App", "Data Viz"]
+            },
+            {
+                title: "コミュニティエンゲージメントプラットフォーム",
+                icon: "megaphone",
+                summary: "地域コミュニティでのコミュニケーションと参加を促進するために設計されたモバイルアプリケーション。",
+                description: "<p>プロジェクトの詳細、その影響、ユーザーからのフィードバック。</p>",
+                tags: ["Mobile App", "Social"]
+            },
+            {
+                title: "パーソナルポートフォリオエンジン",
+                icon: "layout-template",
+                summary: "このWebサイトを動かしているデータ駆動型エンジン。更新が容易になるよう設計されています。",
+                description: "<p>このWebサイト自体が、単一のJavaScriptデータファイルからすべてのコンテンツを取得するカスタムの軽量レンダリングエンジンによって動作しています。これにより、HTMLやCSSのコア部分に触れることなく、セクションの追加、削除、並べ替えが非常に簡単になります。</p>",
+                tags: ["Web App", "JavaScript"]
+            }
+        ]
+    },
+
+    // =================================
+    // SELECTED PUBLICATIONS
+    // =================================
+    publications: {
+        title: "主な論文",
+        subtitle: "最近の最も影響力のある研究成果のリスト。",
+        items: [
+            {
+                title: "The Future of Interactive Data Systems",
+                authors: "<strong>Doe, J.</strong>, Smith, A., & Johnson, B. (2024).",
+                venue: "In Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI '24).",
+                year: 2024,
+                tags: ["HCI", "Data Visualization", "Systems"],
+                thumbnail: "assets/img/publication-thumb.svg",
+                description: "<p>ここに論文の要約全体を追加できます。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                links: [
+                    { name: "PDF", icon: "file-text", url: "#" },
+                    { name: "DOI", icon: "link", url: "#" },
+                    { name: "Code", icon: "github", url: "#" }
+                ]
+            },
+            {
+                title: "Understanding Algorithmic Bias in Social Media Feeds",
+                authors: "<strong>Doe, J.</strong>, & Lee, C. (2023).",
+                venue: "Journal of Computer-Mediated Communication (JCMC).",
+                year: 2023,
+                tags: ["HCI", "Social Computing", "Algorithmic Bias"],
+                thumbnail: "assets/img/publication-thumb.svg",
+                description: "<p>ここに論文の要約全体を追加できます。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                links: [
+                    { name: "PDF", icon: "file-text", url: "#" },
+                    { name: "DOI", icon: "link", url: "#" }
+                ]
+            }
+        ]
+    },
+
+    // =================================
+    // TEACHING & MENTORING
+    // =================================
+    teaching: {
+        title: "教育 & メンタリング",
+        subtitle: "次世代の研究者やエンジニアを教育することに情熱を注いでいます。",
+        items: [
+            {
+                title: "CS 101: ヒューマンコンピュータインタラクション入門",
+                role: "主任講師",
+                semesters: "2023年秋, 2024年秋",
+                summary: "ユーザー中心設計、プロトタイピング、評価手法の基礎をカバーするプロジェクトベースのコース。",
+                description: "<p>ユーザー中心設計、プロトタイピング、評価手法の基礎をカバーするプロジェクトベースのコースです。</p><p class='mt-4'>シラバスへのリンク、主な学習目標、学生プロジェクトの例などの詳細をここに追加できます。</p>"
+            },
+            {
+                title: "CS 202: データ可視化",
+                role: "共同講師",
+                semesters: "2024年春",
+                summary: "効果的かつ倫理的なデータ可視化を作成するための原則と技術に関する大学院レベルのセミナー。",
+                description: "<p>効果的かつ倫理的なデータ可視化を作成するための原則と技術に関する大学院レベルのセミナーです。</p><p class='mt-4'>扱った主なトピック、課題図書、最終プロジェクトの要件について詳しく説明できます。</p>"
+            }
+        ]
+    },
+
+    // =================================
+    // RESOURCES
+    // =================================
+    resources: {
+        title: "リソース",
+        subtitle: "講義ノート、プレゼンテーション、その他の学術資料。",
+        items: [
+            {
+                title: "CS 101: HCI入門 - スライド",
+                type: "Presentation",
+                icon: "presentation",
+                description: "CS 101の導入講義用Webベーススライド。Reveal.jsを使用。",
+                link: "assets/slides/slides_demo.html",
+                action: "view"
+            },
+            {
+                title: "HCIデザイン原則 - チートシート",
+                type: "PDF",
+                icon: "file-text",
+                description: "一般的なデザインヒューリスティクスとアクセシビリティ基準のクイックリファレンスガイド。",
+                link: "#",
+                action: "download"
+            },
+            {
+                title: "データ可視化シラバス (2024年春)",
+                type: "PDF",
+                icon: "file-text",
+                description: "リーディングリストと採点方針を含む完全なコースシラバス。",
+                link: "#",
+                action: "download"
+            }
+        ]
+    },
+
+    // =================================
+    // CONTACT INFORMATION
+    // =================================
+    contact: {
+        title: "お問い合わせ",
+        subtitle: "研究、新しいプロジェクト、コラボレーションの機会について、いつでもお気軽にご相談ください。",
+        items: [
+            {
+                type: "email",
+                title: "Email",
+                icon: "mail",
+                description: "学術的なお問い合わせやコラボレーションについて。",
+                value: "jane.doe@university.edu",
+                link: "mailto:jane.doe@university.edu"
+            },
+            {
+                type: "office",
+                title: "オフィス",
+                icon: "map-pin",
+                description: "オフィスアワーにお気軽にお立ち寄りください。",
+                value: "Room 404, [建物名]<br>[大学名]<br>[都市, 州, 郵便番号]",
+                link: null
+            }
+        ]
+    }
+};
