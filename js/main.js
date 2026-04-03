@@ -15,7 +15,16 @@ It handles:
 
 // --- Language State Management ---
 let currentLanguage = localStorage.getItem('lang') || 'en';
-let portfolioData = (currentLanguage === 'ja' && typeof portfolioDataJa !== 'undefined') ? portfolioDataJa : portfolioDataEn;
+let portfolioData = null;
+
+async function loadData() {
+    try {
+        const response = await fetch(`editor/public/data/${currentLanguage}.json`);
+        portfolioData = await response.json();
+    } catch (error) {
+        console.error("Failed to load portfolio data:", error);
+    }
+}
 
 // Helper to update the language button text
 const updateLangButton = () => {
@@ -988,17 +997,17 @@ function setupUIListeners() {
     const langToggleBtn = document.getElementById('lang-toggle');
     if (langToggleBtn) {
         updateLangButton(); // Set initial text
-        langToggleBtn.addEventListener('click', () => {
+        langToggleBtn.addEventListener('click', async () => {
             if (currentLanguage === 'en') {
                 currentLanguage = 'ja';
-                portfolioData = (typeof portfolioDataJa !== 'undefined') ? portfolioDataJa : portfolioDataEn;
             } else {
                 currentLanguage = 'en';
-                portfolioData = portfolioDataEn;
             }
             
             localStorage.setItem('lang', currentLanguage);
             updateLangButton();
+            
+            await loadData();
             
             // Re-render the entire application with new data
             renderContent();
@@ -1077,7 +1086,7 @@ function setupUIListeners() {
      * REUSABLE FILTER SYSTEM
      * Handles filtering for both Publications and Projects to avoid code duplication.
      */
-    const setupFilterSystem = (containerId, listId, itemClass) => {
+    function setupFilterSystem(containerId, listId, itemClass) {
         const filtersContainer = document.getElementById(containerId);
         if (!filtersContainer) return;
 
@@ -1241,7 +1250,9 @@ function setupBackToTopButton() {
  * 5. INITIAL PAGE LOAD
  * ---------------------------------
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadData();
+    if (!portfolioData) return;
     renderContent();
     setupUIListeners();
     setupBackToTopButton();

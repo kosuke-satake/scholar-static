@@ -1,0 +1,9 @@
+{
+  "name": "academic-portfolio",
+  "version": "1.0.0",
+  "description": "Academic Portfolio with Keystatic Editor",
+  "scripts": {
+    "start": "npx serve .",
+    "editor": "npm run dev --prefix editor"
+  }
+}
