@@ -17,12 +17,34 @@ It handles:
 let currentLanguage = localStorage.getItem('lang') || 'en';
 let portfolioData = null;
 
+const SECTIONS = ['layout', 'uiText', 'seo', 'personal', 'news', 'biography', 'skills', 'research', 'projects', 'publications', 'teaching', 'resources', 'contact'];
+
 async function loadData() {
     try {
-        const response = await fetch(`editor/public/data/${currentLanguage}.json`);
-        portfolioData = await response.json();
+        const promises = SECTIONS.map(sec => 
+            fetch(`editor/public/data/${currentLanguage}/${sec}.json`)
+                .then(r => r.ok ? r.json() : null)
+                .catch(err => {
+                    console.warn(`Could not load section: ${sec}`, err);
+                    return null;
+                })
+        );
+        const results = await Promise.all(promises);
+        
+        // Ensure at least some core data loaded successfully
+        if (!results.some(r => r !== null)) {
+            throw new Error("All data sections failed to load.");
+        }
+
+        portfolioData = {};
+        SECTIONS.forEach((sec, i) => {
+            if (results[i]) {
+                portfolioData[sec] = results[i];
+            }
+        });
     } catch (error) {
         console.error("Failed to load portfolio data:", error);
+        portfolioData = null;
     }
 }
 
