@@ -30,7 +30,7 @@ To edit the site and preview it on your Mac/PC, you need to download it and inst
 2. Install Node.js dependencies. We use `nvm` (Node Version Manager) to ensure you are using the correct version of Node (`v24.14.1`).
    ```bash
    nvm use     # Tells your terminal to use Node v24
-   npm install # Installs the Keystatic CMS engine into the editor/ folder
+   npm install --prefix editor # Installs the Keystatic CMS engine into the editor/ folder
    ```
 
 ### Step 3: Editing Your Content Locally
