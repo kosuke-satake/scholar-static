@@ -266,9 +266,18 @@ function makeSingletons(lang, langLabel) {
 }
 
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  // Keystatic storage mode:
+  // 'local' mode saves directly to your computer's hard drive.
+  // 'github' mode saves directly to your GitHub repository (needed for editing on the live internet).
+  storage: process.env.NODE_ENV === 'production'
+    ? {
+        kind: 'github',
+        // IMPORTANT: Replace this with your actual GitHub username and repository name
+        repo: 'YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME',
+      }
+    : {
+        kind: 'local',
+      },
   ui: {
     brand: { name: 'Academic Portfolio' },
     navigation: {
