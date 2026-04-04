@@ -84,8 +84,15 @@ Right now, Keystatic is in "Local Mode" (it saves files to your Mac). To edit fr
 3. Change the `repo:` string from `'kosuke-satake/scholar-static'` to your actual GitHub info (e.g., `'YOUR_USERNAME/YOUR_REPOSITORY_NAME'`).
 4. Save the file, commit it, and push it to GitHub.
 5. Create a GitHub App for Keystatic: Go to [https://keystatic.com/docs/github-mode](https://keystatic.com/docs/github-mode) and follow the instructions to link your GitHub account to your live Cloudflare URL (`scholar-static.pages.dev/keystatic`).
+6. **CRITICAL STEP:** You must give Cloudflare the secret passwords from your GitHub App! 
+   - Go to your **Cloudflare Dashboard** -> Pages -> `scholar-static` -> **Settings** -> **Environment variables**.
+   - Add these three variables to **both Production and Preview**:
+     - `KEYSTATIC_GITHUB_CLIENT_ID` (Your GitHub App Client ID)
+     - `KEYSTATIC_GITHUB_CLIENT_SECRET` (Your GitHub App Client Secret)
+     - `KEYSTATIC_SECRET` (A random string of at least 32 characters, like `my_super_secret_random_string_12345!`)
+7. **Node Compatibility:** While in Cloudflare Settings, go to **Functions** -> **Compatibility flags** -> Add the flag `nodejs_compat` to both production and preview. (This allows Keystatic to securely encrypt your login session).
 
-Now, if you visit `scholar-static.pages.dev/keystatic`, you will be prompted to log in with GitHub. Any changes you make there will automatically create a commit to your repository, which will instantly trigger Cloudflare to update your live website!
+Once you save these settings in Cloudflare, wait a few minutes, visit `scholar-static.pages.dev/keystatic`, and click Login with GitHub. It will now successfully authorize you and allow you to edit your site!
 
 ---
 
