@@ -1,0 +1,25 @@
+{
+  "title": "Biography",
+  "subtitle": "An interactive overview of my academic and professional journey.",
+  "timeline": [
+    {
+      "date": "2022 - Present",
+      "title": "Assistant Professor",
+      "subtitle": "[Your University], [City, State]",
+      "description": "<p>At [Your University], I lead the [Your Lab Name] lab, focusing on [Your research area]. I mentor graduate and undergraduate students and teach courses on [Course 1] and [Course 2].</p><p class='mt-4'>My current research projects include [Project 1] and [Project 2], funded by [Funding Source].</p>"
+    },
+    {
+      "date": "2020 - 2022",
+      "title": "Postdoctoral Researcher",
+      "subtitle": "[Previous University], [City, State]",
+      "description": "<p>As a postdoc in the [Lab Name] with [Advisor Name], I worked on [Project Name]. This work resulted in [Number] publications, including a Best Paper award at [Conference Name].</p><p class='mt-4'>I also co-organized the [Workshop Name] and mentored several junior students.</p>"
+    },
+    {
+      "date": "2016 - 2020",
+      "title": "Ph.D. in Computer Science",
+      "subtitle": "[Graduate University], [City, State]",
+      "description": "<p>My doctoral research focused on [Dissertation Topic]. I was advised by [Advisor Name] and was fortunate to be supported by the [Fellowship Name].</p><p class='mt-4'>My dissertation, '[Dissertation Title],' proposed a new model for [Field] and was awarded the [Award Name].</p>",
+      "extra": "Dissertation: \"Title of Your Dissertation\""
+    }
+  ]
+}

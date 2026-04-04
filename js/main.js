@@ -39,7 +39,7 @@ async function loadData() {
         portfolioData = {};
         SECTIONS.forEach((sec, i) => {
             if (results[i]) {
-                portfolioData[sec] = results[i];
+                portfolioData[sec] = (sec === 'layout' && results[i].layout) ? results[i].layout : results[i];
             }
         });
     } catch (error) {

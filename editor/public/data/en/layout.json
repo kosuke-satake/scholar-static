@@ -1,0 +1,52 @@
+{
+  "layout": [
+    {
+      "id": "home",
+      "nav": "Home",
+      "renderer": "renderHero",
+      "dataKey": "personal"
+    },
+    {
+      "id": "biography",
+      "nav": "Biography",
+      "renderer": "renderTimeline",
+      "dataKey": "biography"
+    },
+    {
+      "id": "research",
+      "nav": "Research",
+      "renderer": "renderCardGrid",
+      "dataKey": "research"
+    },
+    {
+      "id": "projects",
+      "nav": "Projects",
+      "renderer": "renderCardGrid",
+      "dataKey": "projects"
+    },
+    {
+      "id": "publications",
+      "nav": "Publications",
+      "renderer": "renderItemList",
+      "dataKey": "publications"
+    },
+    {
+      "id": "teaching",
+      "nav": "Teaching",
+      "renderer": "renderTeachingList",
+      "dataKey": "teaching"
+    },
+    {
+      "id": "resources",
+      "nav": "Resources",
+      "renderer": "renderResourceList",
+      "dataKey": "resources"
+    },
+    {
+      "id": "contact",
+      "nav": "Contact",
+      "renderer": "renderContactForm",
+      "dataKey": "contact"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "News & Updates",
+  "subtitle": "Recent announcements and achievements.",
+  "items": [
+    {
+      "date": "Oct 2025",
+      "content": "Excited to announce our paper '[Paper Title]' was accepted to [Conference Name]!"
+    },
+    {
+      "date": "Sep 2025",
+      "content": "I will be giving a talk at the [Event Name] on the topic of [Topic]."
+    },
+    {
+      "date": "Jul 2025",
+      "content": "Our work on [Project Name] was featured in [Publication/News Outlet]."
+    },
+    {
+      "date": "May 2025",
+      "content": "Received the [Award Name] for contributions to the field of HCI."
+    }
+  ]
+}

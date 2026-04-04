@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "quickFacts": "Quick Facts",
+    "news": "Latest News"
+  },
+  "publications": {
+    "filters": {
+      "all": "All",
+      "searchPlaceholder": "Search publications..."
+    }
+  },
+  "projects": {
+    "filters": {
+      "all": "All",
+      "searchPlaceholder": "Search projects..."
+    }
+  },
+  "timeline": {
+    "readMore": "Click to read more..."
+  },
+  "teaching": {
+    "role": "Role:",
+    "semesters": "Semesters:"
+  },
+  "resources": {
+    "viewButton": "View",
+    "downloadButton": "Download"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

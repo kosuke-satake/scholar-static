@@ -1,0 +1,30 @@
+{
+  "title": "リソース",
+  "subtitle": "講義ノート、プレゼンテーション、その他の学術資料。",
+  "items": [
+    {
+      "title": "CS 101: HCI入門 - スライド",
+      "type": "Presentation",
+      "icon": "presentation",
+      "description": "CS 101の導入講義用Webベーススライド。Reveal.jsを使用。",
+      "link": "assets/slides/slides_demo.html",
+      "action": "view"
+    },
+    {
+      "title": "HCIデザイン原則 - チートシート",
+      "type": "PDF",
+      "icon": "file-text",
+      "description": "一般的なデザインヒューリスティクスとアクセシビリティ基準のクイックリファレンスガイド。",
+      "link": "#",
+      "action": "download"
+    },
+    {
+      "title": "データ可視化シラバス (2024年春)",
+      "type": "PDF",
+      "icon": "file-text",
+      "description": "リーディングリストと採点方針を含む完全なコースシラバス。",
+      "link": "#",
+      "action": "download"
+    }
+  ]
+}

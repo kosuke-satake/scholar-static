@@ -1,0 +1,36 @@
+{
+  "title": "Projects",
+  "subtitle": "A selection of software projects and tools I have developed.",
+  "items": [
+    {
+      "title": "Interactive Data Explorer",
+      "icon": "database-zap",
+      "summary": "A web-based tool for interactively exploring and visualizing large datasets.",
+      "description": "<p>More details about the project, its technologies, and a link to the live demo or source code.</p>",
+      "tags": [
+        "Web App",
+        "Data Viz"
+      ]
+    },
+    {
+      "title": "Community Engagement Platform",
+      "icon": "megaphone",
+      "summary": "A mobile application designed to facilitate communication and engagement in local communities.",
+      "description": "<p>More details about the project, its impact, and user feedback.</p>",
+      "tags": [
+        "Mobile App",
+        "Social"
+      ]
+    },
+    {
+      "title": "Personal Portfolio Engine",
+      "icon": "layout-template",
+      "summary": "The data-driven engine that runs this website, designed for easy updates.",
+      "description": "<p>This very website is powered by a custom, lightweight rendering engine that pulls all content from a single JavaScript data file. This makes it incredibly easy to add, remove, or reorder sections without touching the core HTML or CSS.</p>",
+      "tags": [
+        "Web App",
+        "JavaScript"
+      ]
+    }
+  ]
+}

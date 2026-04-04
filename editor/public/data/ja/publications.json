@@ -1,0 +1,61 @@
+{
+  "title": "主な論文",
+  "subtitle": "最近の最も影響力のある研究成果のリスト。",
+  "items": [
+    {
+      "title": "The Future of Interactive Data Systems",
+      "authors": "<strong>Doe, J.</strong>, Smith, A., & Johnson, B. (2024).",
+      "venue": "In Proceedings of the ACM Conference on Human Factors in Computing Systems (CHI '24).",
+      "year": 2024,
+      "tags": [
+        "HCI",
+        "Data Visualization",
+        "Systems"
+      ],
+      "thumbnail": "assets/img/publication-thumb.svg",
+      "description": "<p>ここに論文の要約全体を追加できます。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+      "links": [
+        {
+          "name": "PDF",
+          "icon": "file-text",
+          "url": "#"
+        },
+        {
+          "name": "DOI",
+          "icon": "link",
+          "url": "#"
+        },
+        {
+          "name": "Code",
+          "icon": "github",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "title": "Understanding Algorithmic Bias in Social Media Feeds",
+      "authors": "<strong>Doe, J.</strong>, & Lee, C. (2023).",
+      "venue": "Journal of Computer-Mediated Communication (JCMC).",
+      "year": 2023,
+      "tags": [
+        "HCI",
+        "Social Computing",
+        "Algorithmic Bias"
+      ],
+      "thumbnail": "assets/img/publication-thumb.svg",
+      "description": "<p>ここに論文の要約全体を追加できます。Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+      "links": [
+        {
+          "name": "PDF",
+          "icon": "file-text",
+          "url": "#"
+        },
+        {
+          "name": "DOI",
+          "icon": "link",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}

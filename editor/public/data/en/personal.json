@@ -1,0 +1,76 @@
+{
+  "name": "Dr. Jane Doe",
+  "title": "Assistant Professor of Computer Science",
+  "profileImage": "assets/img/profile.svg",
+  "introduction": "Welcome to my portfolio. I am a researcher at [Your University], specializing in human-computer interaction, machine learning, and data visualization. My work aims to create intelligent systems that augment human capabilities and promote equitable access to information.",
+  "stats": [
+    {
+      "value": "50+",
+      "label": "Publications"
+    },
+    {
+      "value": "1500+",
+      "label": "Citations"
+    },
+    {
+      "value": "10+",
+      "label": "Years of Experience"
+    },
+    {
+      "value": "20+",
+      "label": "Students Mentored"
+    }
+  ],
+  "quickFacts": [
+    {
+      "text": "Passionate about Human-AI Collaboration",
+      "icon": "users"
+    },
+    {
+      "text": "Expert in Explainable AI (XAI)",
+      "icon": "brain-circuit"
+    },
+    {
+      "text": "Advocate for Ethical Data Practices",
+      "icon": "shield-check"
+    },
+    {
+      "text": "Outdoor enthusiast & photographer",
+      "icon": "camera"
+    }
+  ],
+  "links": [
+    {
+      "name": "Download CV",
+      "icon": "download",
+      "url": "#"
+    },
+    {
+      "name": "Google Scholar",
+      "icon": "book-open",
+      "url": "#"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "#"
+    }
+  ],
+  "social": [
+    {
+      "name": "Twitter",
+      "icon": "twitter",
+      "url": "#"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "#"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "#"
+    }
+  ]
+}

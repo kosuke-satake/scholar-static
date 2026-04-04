@@ -1,0 +1,37 @@
+{
+  "title": "Skills & Expertise",
+  "subtitle": "A summary of my technical and academic skills.",
+  "categories": [
+    {
+      "title": "Programming Languages",
+      "items": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "C++",
+        "SQL",
+        "R"
+      ]
+    },
+    {
+      "title": "Technologies & Frameworks",
+      "items": [
+        "React",
+        "Node.js",
+        "D3.js",
+        "TensorFlow",
+        "PyTorch",
+        "WebGL"
+      ]
+    },
+    {
+      "title": "Methodologies",
+      "items": [
+        "User-Centered Design",
+        "Agile Development",
+        "Data Analysis",
+        "Statistical Modeling"
+      ]
+    }
+  ]
+}

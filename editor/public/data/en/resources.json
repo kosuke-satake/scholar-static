@@ -1,0 +1,30 @@
+{
+  "title": "Resources",
+  "subtitle": "Lecture notes, presentations, and other academic materials.",
+  "items": [
+    {
+      "title": "CS 101: Introduction to HCI - Slides",
+      "type": "Presentation",
+      "icon": "presentation",
+      "description": "Web-based slides for the introductory lecture of CS 101. Powered by Reveal.js.",
+      "link": "assets/slides/slides_demo.html",
+      "action": "view"
+    },
+    {
+      "title": "HCI Design Principles - Cheat Sheet",
+      "type": "PDF",
+      "icon": "file-text",
+      "description": "A quick reference guide for common design heuristics and accessibility standards.",
+      "link": "#",
+      "action": "download"
+    },
+    {
+      "title": "Data Viz Syllabus (Spring 2024)",
+      "type": "PDF",
+      "icon": "file-text",
+      "description": "Full course syllabus including reading list and grading policy.",
+      "link": "#",
+      "action": "download"
+    }
+  ]
+}

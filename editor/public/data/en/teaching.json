@@ -1,0 +1,20 @@
+{
+  "title": "Teaching & Mentoring",
+  "subtitle": "I am passionate about teaching the next generation of researchers and engineers.",
+  "items": [
+    {
+      "title": "CS 101: Introduction to Human-Computer Interaction",
+      "role": "Lead Instructor",
+      "semesters": "Fall 2023, Fall 2024",
+      "summary": "A project-based course covering the fundamentals of user-centered design, prototyping, and evaluation methods.",
+      "description": "<p>A project-based course covering the fundamentals of user-centered design, prototyping, and evaluation methods.</p><p class='mt-4'>Here you could add more details, like a link to the syllabus, key learning objectives, or examples of student projects.</p>"
+    },
+    {
+      "title": "CS 202: Data Visualization",
+      "role": "Co-Instructor",
+      "semesters": "Spring 2024",
+      "summary": "Graduate-level seminar on the principles and techniques for creating effective and ethical data visualizations.",
+      "description": "<p>Graduate-level seminar on the principles and techniques for creating effective and ethical data visualizations.</p><p class='mt-4'>You could elaborate on the key topics covered, the assigned readings, or the final project requirements.</p>"
+    }
+  ]
+}

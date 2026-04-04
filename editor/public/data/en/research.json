@@ -1,0 +1,24 @@
+{
+  "title": "Research Interests",
+  "subtitle": "My research explores the intersection of technology and human-centered design. Key areas of focus include:",
+  "items": [
+    {
+      "title": "Human-Computer Interaction",
+      "icon": "users",
+      "summary": "Designing and evaluating novel interactive systems that are intuitive, efficient, and enjoyable to use.",
+      "description": "<p>Here you can write a detailed explanation of your work in HCI.</p><p class='mt-4'>This could include your design philosophy, specific methodologies you use (e.g., user-centered design, participatory design), and the ultimate goals of your HCI research.</p>"
+    },
+    {
+      "title": "Machine Learning",
+      "icon": "brain-circuit",
+      "summary": "Developing interpretable ML models and applying them to understand complex human behaviors and social phenomena.",
+      "description": "<p>This is the space to elaborate on your machine learning research.</p><p class='mt-4'>You could discuss the types of models you build (e.g., deep learning, reinforcement learning), your focus on interpretability and fairness, and specific application domains (e.g., healthcare, education).</p>"
+    },
+    {
+      "title": "Data Visualization",
+      "icon": "bar-chart-3",
+      "summary": "Creating interactive visualizations that help people explore, understand, and communicate complex data.",
+      "description": "<p>Expand on your data visualization work here.</p><p class='mt-4'>Detail your work on information visualization (InfoVis) or scientific visualization (SciVis), the development of new visualization techniques, or your research on how visualizations impact human perception and decision-making.</p>"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": "スキル & 専門知識",
+  "subtitle": "技術的および学術的なスキルの概要。",
+  "categories": [
+    {
+      "title": "プログラミング言語",
+      "items": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "C++",
+        "SQL",
+        "R"
+      ]
+    },
+    {
+      "title": "技術 & フレームワーク",
+      "items": [
+        "React",
+        "Node.js",
+        "D3.js",
+        "TensorFlow",
+        "PyTorch",
+        "WebGL"
+      ]
+    },
+    {
+      "title": "方法論",
+      "items": [
+        "ユーザー中心設計",
+        "アジャイル開発",
+        "データ分析",
+        "統計モデリング"
+      ]
+    }
+  ]
+}

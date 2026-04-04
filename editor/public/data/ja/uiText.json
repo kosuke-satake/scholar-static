@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "quickFacts": "基本情報",
+    "news": "最新ニュース"
+  },
+  "publications": {
+    "filters": {
+      "all": "すべて",
+      "searchPlaceholder": "論文を検索..."
+    }
+  },
+  "projects": {
+    "filters": {
+      "all": "すべて",
+      "searchPlaceholder": "プロジェクトを検索..."
+    }
+  },
+  "timeline": {
+    "readMore": "詳細を見る..."
+  },
+  "teaching": {
+    "role": "役割:",
+    "semesters": "学期:"
+  },
+  "resources": {
+    "viewButton": "表示",
+    "downloadButton": "ダウンロード"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

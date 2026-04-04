@@ -1,0 +1,22 @@
+{
+  "title": "Get in Touch",
+  "subtitle": "I am always open to discussing research, new projects, and collaboration opportunities.",
+  "items": [
+    {
+      "type": "email",
+      "title": "Email",
+      "icon": "mail",
+      "description": "For academic inquiries and collaboration.",
+      "value": "jane.doe@university.edu",
+      "link": "mailto:jane.doe@university.edu"
+    },
+    {
+      "type": "office",
+      "title": "Office",
+      "icon": "map-pin",
+      "description": "Feel free to stop by during office hours.",
+      "value": "Room 404, [Your Building Name]<br>[Your University]<br>[City, State, Zip]",
+      "link": ""
+    }
+  ]
+}

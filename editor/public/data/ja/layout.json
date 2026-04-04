@@ -1,0 +1,52 @@
+{
+  "layout": [
+    {
+      "id": "home",
+      "nav": "ホーム",
+      "renderer": "renderHero",
+      "dataKey": "personal"
+    },
+    {
+      "id": "biography",
+      "nav": "略歴",
+      "renderer": "renderTimeline",
+      "dataKey": "biography"
+    },
+    {
+      "id": "research",
+      "nav": "研究",
+      "renderer": "renderCardGrid",
+      "dataKey": "research"
+    },
+    {
+      "id": "projects",
+      "nav": "プロジェクト",
+      "renderer": "renderCardGrid",
+      "dataKey": "projects"
+    },
+    {
+      "id": "publications",
+      "nav": "論文",
+      "renderer": "renderItemList",
+      "dataKey": "publications"
+    },
+    {
+      "id": "teaching",
+      "nav": "教育",
+      "renderer": "renderTeachingList",
+      "dataKey": "teaching"
+    },
+    {
+      "id": "resources",
+      "nav": "リソース",
+      "renderer": "renderResourceList",
+      "dataKey": "resources"
+    },
+    {
+      "id": "contact",
+      "nav": "連絡先",
+      "renderer": "renderContactForm",
+      "dataKey": "contact"
+    }
+  ]
+}
