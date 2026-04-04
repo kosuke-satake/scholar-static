@@ -81,7 +81,7 @@ Right now, Keystatic is in "Local Mode" (it saves files to your Mac). To edit fr
 
 1. Open `editor/keystatic.config.tsx` in your code editor.
 2. Find the `storage:` block at the very bottom of the file.
-3. Change the `repo:` string from `'YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME'` to your actual GitHub info (e.g., `'kosuke-satake/my-portfolio'`).
+3. Change the `repo:` string from `'kosuke-satake/scholar-static'` to your actual GitHub info (e.g., `'YOUR_USERNAME/YOUR_REPOSITORY_NAME'`).
 4. Save the file, commit it, and push it to GitHub.
 5. Create a GitHub App for Keystatic: Go to [https://keystatic.com/docs/github-mode](https://keystatic.com/docs/github-mode) and follow the instructions to link your GitHub account to your live Cloudflare URL (`scholar-static.pages.dev/keystatic`).
 

@@ -316,8 +316,8 @@ export default config({
   storage: process.env.NODE_ENV === 'production'
     ? {
         kind: 'github',
-        // IMPORTANT: Replace this with your actual GitHub username and repository name
-        repo: 'YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME',
+        // IMPORTANT: If you fork this, replace this with your actual GitHub username and repository name
+        repo: 'kosuke-satake/scholar-static',
       }
     : {
         kind: 'local',
