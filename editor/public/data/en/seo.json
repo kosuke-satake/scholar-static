@@ -1,7 +1,7 @@
 {
-  "description": "Academic Portfolio of Dr. Jane Doe - Assistant Professor of Computer Science. Researching HCI, Machine Learning, and Visualization.",
-  "ogTitle": "Dr. Jane Doe - Academic Portfolio",
-  "ogDescription": "Academic Portfolio of Dr. Jane Doe. Researching HCI, Machine Learning, and Visualization.",
+  "description": "ScholarStatic of Dr. Jane Doe - Assistant Professor of Computer Science. Researching HCI, Machine Learning, and Visualization.",
+  "ogTitle": "Dr. Jane Doe - ScholarStatic",
+  "ogDescription": "ScholarStatic of Dr. Jane Doe. Researching HCI, Machine Learning, and Visualization.",
   "ogImage": "assets/img/og-image.svg",
   "ogUrl": "#",
   "twitterCard": "summary_large_image"

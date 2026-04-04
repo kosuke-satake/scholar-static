@@ -323,7 +323,7 @@ export default config({
         kind: 'local',
       },
   ui: {
-    brand: { name: 'Academic Portfolio' },
+    brand: { name: 'ScholarStatic' },
     navigation: {
       'English Content': ['en_personal', 'en_biography', 'en_research', 'en_projects', 'en_publications', 'en_teaching', 'en_resources', 'en_skills', 'en_news', 'en_contact', 'en_uiText', 'en_seo', 'en_layout'],
       'Japanese Content': ['ja_personal', 'ja_biography', 'ja_research', 'ja_projects', 'ja_publications', 'ja_teaching', 'ja_resources', 'ja_skills', 'ja_news', 'ja_contact', 'ja_uiText', 'ja_seo', 'ja_layout']
