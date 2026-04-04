@@ -83,16 +83,26 @@ Right now, Keystatic is in "Local Mode" (it saves files to your Mac). To edit fr
 2. Find the `storage:` block at the very bottom of the file.
 3. Change the `repo:` string from `'kosuke-satake/scholar-static'` to your actual GitHub info (e.g., `'YOUR_USERNAME/YOUR_REPOSITORY_NAME'`).
 4. Save the file, commit it, and push it to GitHub.
-5. Create a GitHub App for Keystatic: Go to [https://keystatic.com/docs/github-mode](https://keystatic.com/docs/github-mode) and follow the instructions to link your GitHub account to your live Cloudflare URL (`scholar-static.pages.dev/keystatic`).
-6. **CRITICAL STEP:** You must give Cloudflare the secret passwords from your GitHub App! 
+5. **Create a GitHub App for Keystatic:** You must give Keystatic secure permission to read and write to your repository.
+   - Go to **GitHub.com** -> Click your Profile Picture -> **Settings** -> **Developer Settings** (at the bottom left) -> **GitHub Apps** -> **New GitHub App**.
+   - Fill out the form exactly like this:
+     - **GitHub App name:** `ScholarStatic Editor` (or any unique name you want)
+     - **Homepage URL:** `https://YOUR_SITE.pages.dev` (Your live Cloudflare URL)
+     - **Callback URL:** `https://YOUR_SITE.pages.dev/api/keystatic/github/oauth/callback`
+     - **Webhook:** Uncheck the "Active" box (You do not need Webhooks).
+     - **Repository permissions:** Find **Contents** and change it to **Read and write**.
+   - Click **Create GitHub App**.
+   - On the next screen, click **Generate a new client secret**. Keep this tab open for the next step!
+6. **Install the App:** In the left sidebar of your new GitHub App, click **Install App** and install it on your portfolio repository.
+7. **CRITICAL STEP:** You must give Cloudflare the secret passwords from your GitHub App! 
    - Go to your **Cloudflare Dashboard** -> Pages -> `scholar-static` -> **Settings** -> **Environment variables**.
    - Add these three variables to **both Production and Preview**:
      - `KEYSTATIC_GITHUB_CLIENT_ID` (Your GitHub App Client ID)
      - `KEYSTATIC_GITHUB_CLIENT_SECRET` (Your GitHub App Client Secret)
      - `KEYSTATIC_SECRET` (A random string of at least 32 characters, like `my_super_secret_random_string_12345!`)
-7. **Node Compatibility:** While in Cloudflare Settings, go to **Functions** -> **Compatibility flags** -> Add the flag `nodejs_compat` to both production and preview. (This allows Keystatic to securely encrypt your login session).
+8. **Node Compatibility:** While in Cloudflare Settings, go to **Functions** -> **Compatibility flags** -> Add the flag `nodejs_compat` to both production and preview. (This allows Keystatic to securely encrypt your login session).
 
-Once you save these settings in Cloudflare, wait a few minutes, visit `scholar-static.pages.dev/keystatic`, and click Login with GitHub. It will now successfully authorize you and allow you to edit your site!
+Once you save these settings in Cloudflare, wait a few minutes, visit `https://YOUR_SITE.pages.dev/keystatic`, and click Login with GitHub. It will now successfully authorize you and allow you to edit your site!
 
 ---
 
