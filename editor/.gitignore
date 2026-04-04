@@ -3,6 +3,10 @@ dist/
 .astro/
 *.log
 
+# Ignore environment variables
+.env
+.dev.vars
+
 # Ignore static assets copied from root during build
 public/css/
 public/js/
