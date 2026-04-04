@@ -4,10 +4,54 @@ import { config, fields, singleton } from '@keystatic/core';
 const layoutSchema = {
     layout: fields.array(
         fields.object({
-            id: fields.text({ label: 'ID' }),
-            nav: fields.text({ label: 'Navigation Label' }),
-            renderer: fields.text({ label: 'Renderer Function' }),
-            dataKey: fields.text({ label: 'Data Key' })
+            id: fields.select({
+                label: 'Section ID (HTML anchor)',
+                description: 'The internal ID used for scrolling (e.g., #home)',
+                options: [
+                    { label: 'home', value: 'home' },
+                    { label: 'biography', value: 'biography' },
+                    { label: 'research', value: 'research' },
+                    { label: 'projects', value: 'projects' },
+                    { label: 'publications', value: 'publications' },
+                    { label: 'teaching', value: 'teaching' },
+                    { label: 'resources', value: 'resources' },
+                    { label: 'contact', value: 'contact' }
+                ],
+                defaultValue: 'home'
+            }),
+            nav: fields.text({ 
+                label: 'Navigation Label',
+                description: 'The text that will appear in the top menu bar (e.g., "Home" or "ホーム")' 
+            }),
+            renderer: fields.select({
+                label: 'Renderer Function (Design Style)',
+                description: 'Select which visual component should be used to display this section.',
+                options: [
+                    { label: 'Hero Layout (Profile & Quick Facts)', value: 'renderHero' },
+                    { label: 'Timeline Layout (Biography)', value: 'renderTimeline' },
+                    { label: 'Card Grid Layout (Projects/Research)', value: 'renderCardGrid' },
+                    { label: 'Item List Layout (Publications)', value: 'renderItemList' },
+                    { label: 'Teaching Layout (Courses)', value: 'renderTeachingList' },
+                    { label: 'Resources Layout (Sidebar & Categories)', value: 'renderResourceList' },
+                    { label: 'Contact Layout (Cards)', value: 'renderContactForm' }
+                ],
+                defaultValue: 'renderHero'
+            }),
+            dataKey: fields.select({
+                label: 'Data Key (Content Source)',
+                description: 'Which Keystatic data tab should this section load content from?',
+                options: [
+                    { label: 'Personal Information', value: 'personal' },
+                    { label: 'Biography', value: 'biography' },
+                    { label: 'Research', value: 'research' },
+                    { label: 'Projects', value: 'projects' },
+                    { label: 'Publications', value: 'publications' },
+                    { label: 'Teaching', value: 'teaching' },
+                    { label: 'Resources', value: 'resources' },
+                    { label: 'Contact', value: 'contact' }
+                ],
+                defaultValue: 'personal'
+            })
         }),
         { label: 'Layout Control', itemLabel: props => props.fields.nav.value }
     )

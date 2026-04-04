@@ -97,4 +97,17 @@ ScholarStatic is designed to be fully customizable because nothing is hidden beh
 *   **Styling (Tailwind CSS):** Open `css/style.css`. We use a compiled Tailwind file. If you want to change core colors or rebuild the CSS, you can install Tailwind CLI and watch the `tailwind.config.js` file.
 *   **Logic & Rendering:** Open `js/main.js`. This is where the magic happens. The `RENDERERS` object controls exactly how the JSON data is converted into HTML. If you want your "Projects" cards to look different, simply edit the `renderCardGrid` function!
 
+### 🧩 Understanding the "Layout & Navigation" Tab
+
+One of the most powerful features of ScholarStatic is the **Layout & Navigation** tab in Keystatic. This tab controls *what* sections appear on your live site and in *what order*. 
+
+Each layout block has four settings (configured as simple dropdowns to prevent typos):
+1. **Section ID:** The internal HTML anchor link (e.g., `#teaching`).
+2. **Navigation Label:** The actual text shown in your top menu (e.g., "Courses").
+3. **Renderer Function:** Which visual style to use (e.g., Timeline, Card Grid, List).
+4. **Data Key:** Which Keystatic content tab to pull data from (e.g., `teaching`).
+
+**What happens if I delete a section?**
+If you delete "Teaching" from the Layout tab, it will instantly disappear from your live website and your top navigation menu! However, **the "Teaching" tab will still remain in the Keystatic sidebar**. This is intentional! Keystatic acts as a permanent database for *all* your content. The Layout tab simply decides which of that content is currently "published." If you don't need a tab, you can simply ignore it.
+
 Enjoy your lightning-fast, highly-organized academic portfolio!
