@@ -1,4 +1,4 @@
-# Academic Portfolio with Keystatic
+# ScholarStatic
 
 A lightweight, blazing-fast academic portfolio powered by raw HTML/JS/CSS, fully manageable via a local Keystatic CMS.
 
