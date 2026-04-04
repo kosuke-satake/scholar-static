@@ -72,8 +72,8 @@ If you use Cloudflare Pages (highly recommended!), you can host this site for fr
 2. Click **Connect to Git** and select your new portfolio repository.
 3. Configure the Build Settings:
    - **Framework Preset:** `None`
-   - **Build command:** *(Leave completely empty)*
-   - **Build output directory:** `/` *(Just a forward slash)*
+   - **Build command:** `npm run build`
+   - **Build output directory:** `editor/dist`
 4. Click **Save and Deploy**. Your site is now live on the internet!
 
 ### 2. Enable Keystatic "GitHub Mode" (Edit from Anywhere)

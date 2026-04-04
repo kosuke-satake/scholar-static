@@ -21,8 +21,11 @@ const SECTIONS = ['layout', 'uiText', 'seo', 'personal', 'news', 'biography', 's
 
 async function loadData() {
     try {
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const dataPath = isLocal ? 'editor/public/data' : 'data';
+
         const promises = SECTIONS.map(sec => 
-            fetch(`editor/public/data/${currentLanguage}/${sec}.json`)
+            fetch(`${dataPath}/${currentLanguage}/${sec}.json`)
                 .then(r => r.ok ? r.json() : null)
                 .catch(err => {
                     console.warn(`Could not load section: ${sec}`, err);

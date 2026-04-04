@@ -2,3 +2,9 @@ node_modules/
 dist/
 .astro/
 *.log
+
+# Ignore static assets copied from root during build
+public/css/
+public/js/
+public/assets/
+public/index.html

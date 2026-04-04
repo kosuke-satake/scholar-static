@@ -4,6 +4,7 @@
   "description": "Academic Portfolio with Keystatic Editor",
   "scripts": {
     "start": "npx serve .",
-    "editor": "npm run dev --prefix editor"
+    "editor": "npm run dev --prefix editor",
+    "build": "mkdir -p editor/public/css editor/public/js editor/public/assets && cp -r css/* editor/public/css/ && cp -r js/* editor/public/js/ && cp -r assets/* editor/public/assets/ && cp index.html editor/public/ && npm ci --prefix editor && npm run build --prefix editor"
   }
 }
