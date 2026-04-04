@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 dist/
 .env
+.dev.vars
+*.log
+.wrangler/
+cf.json
