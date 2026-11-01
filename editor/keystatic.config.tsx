@@ -83,7 +83,19 @@ const uiTextSchema = {
     }),
     resources: fields.object({
         viewButton: fields.text({ label: 'View Button' }),
-        downloadButton: fields.text({ label: 'Download Button' })
+        downloadButton: fields.text({ label: 'Download Button' }),
+        categoriesLabel: fields.text({ label: 'Categories Heading' }),
+        typeLabels: fields.array(
+            fields.object({
+                type: fields.text({ label: 'Type (as written in the resource)' }),
+                label: fields.text({ label: 'Heading Label' })
+            }),
+            { label: 'Type Labels', itemLabel: props => props.fields.type.value }
+        )
+    }),
+    nav: fields.object({
+        openMenu: fields.text({ label: 'Open Menu (accessible label)' }),
+        goToTop: fields.text({ label: 'Go to Top (accessible label)' })
     }),
     footer: fields.object({
         rights: fields.text({ label: 'Rights Text' })

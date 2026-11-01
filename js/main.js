@@ -569,7 +569,9 @@ const RENDERERS = {
      */
     renderResourceList: (data) => {
         const uiText = portfolioData.uiText.resources;
-        
+        // Display name of a resource type; without a configured label it falls back to the plain plural.
+        const typeLabel = (type) => (uiText.typeLabels || []).find(t => t.type === type)?.label || type + 's';
+
         // Group items by type
         const groupedItems = data.items.reduce((acc, item) => {
             if (!acc[item.type]) {
@@ -598,7 +600,7 @@ const RENDERERS = {
 
             const sectionTitle = document.createElement('h3');
             sectionTitle.className = 'text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-2';
-            sectionTitle.textContent = type + 's'; // Pluralize roughly
+            sectionTitle.textContent = typeLabel(type);
             section.appendChild(sectionTitle);
 
             const grid = document.createElement('div');
@@ -670,7 +672,7 @@ const RENDERERS = {
 
         const navTitle = document.createElement('h4');
         navTitle.className = 'text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4';
-        navTitle.textContent = 'Categories';
+        navTitle.textContent = uiText.categoriesLabel || 'Categories';
         stickyWrapper.appendChild(navTitle);
 
         const navList = document.createElement('ul');
@@ -683,7 +685,7 @@ const RENDERERS = {
             const link = document.createElement('a');
             link.href = `#${sectionId}`;
             link.className = 'block pl-4 py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-l-2 hover:border-indigo-600 -ml-[2px] transition-all';
-            link.textContent = type + 's';
+            link.textContent = typeLabel(type);
             
             // Smooth scroll behavior for sidebar links
             link.addEventListener('click', (e) => {
@@ -948,6 +950,19 @@ function renderContent() {
     timelineItems.forEach(item => {
         item.style.zIndex = 2;
     });
+
+    // Accessible labels that live in index.html (the English text there is the fallback)
+    const navText = portfolioData.uiText.nav;
+    if (navText) {
+        const menuButton = document.getElementById('mobile-menu-button');
+        if (navText.openMenu) {
+            menuButton.setAttribute('aria-label', navText.openMenu);
+            menuButton.querySelector('.sr-only').textContent = navText.openMenu;
+        }
+        if (navText.goToTop) {
+            document.querySelector('#back-to-top .sr-only').textContent = navText.goToTop;
+        }
+    }
 
     // Update SEO Meta Tags
     if (portfolioData.seo) {

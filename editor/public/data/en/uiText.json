@@ -24,9 +24,24 @@
   },
   "resources": {
     "viewButton": "View",
-    "downloadButton": "Download"
+    "downloadButton": "Download",
+    "categoriesLabel": "Categories",
+    "typeLabels": [
+      {
+        "type": "PDF",
+        "label": "PDFs"
+      },
+      {
+        "type": "Presentation",
+        "label": "Presentations"
+      }
+    ]
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "nav": {
+    "openMenu": "Open main menu",
+    "goToTop": "Go to top"
   }
 }
