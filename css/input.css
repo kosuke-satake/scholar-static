@@ -415,7 +415,8 @@ This section styles the pop-up modal window used to display more details.
     backdrop-filter: blur(4px);
     opacity: 0;
     pointer-events: none; /* Not interactive when hidden */
-    transition: opacity 0.3s ease-out;
+    visibility: hidden; /* Also removes the closed dialog from the tab order and the accessibility tree */
+    transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
 }
 
 /* The main content area of the modal. */
@@ -439,6 +440,8 @@ This section styles the pop-up modal window used to display more details.
 .modal-overlay.is-open {
     opacity: 1;
     pointer-events: auto; /* Make it interactive */
+    visibility: visible;
+    transition: opacity 0.3s ease-out, visibility 0s;
 }
 
 .modal-overlay.is-open .modal-content {

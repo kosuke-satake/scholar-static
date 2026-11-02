@@ -1577,7 +1577,8 @@ a:focus-visible, button:focus-visible, .clickable-modal:focus-visible {
   backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
 }
 .modal-content {
   background-color: #ffffff;
@@ -1597,6 +1598,8 @@ a:focus-visible, button:focus-visible, .clickable-modal:focus-visible {
 .modal-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.3s ease-out, visibility 0s;
 }
 .modal-overlay.is-open .modal-content {
   opacity: 1;

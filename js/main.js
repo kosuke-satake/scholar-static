@@ -1017,6 +1017,9 @@ function renderContent() {
             menuButton.setAttribute('aria-label', navText.openMenu);
             menuButton.querySelector('.sr-only').textContent = navText.openMenu;
         }
+        if (navText.closeDialog) {
+            document.getElementById('modal-close-btn').setAttribute('aria-label', navText.closeDialog);
+        }
         if (navText.goToTop) {
             document.querySelector('#back-to-top .sr-only').textContent = navText.goToTop;
         }
@@ -1141,6 +1144,9 @@ function setupUIListeners() {
     // --- Modal Logic ---
     const modal = document.getElementById('item-modal');
     
+    const modalCloseButton = document.getElementById('modal-close-btn');
+    let focusBeforeModal = null;
+
     // Function to open the modal
     const openModal = (item) => {
         // Populate modal content
@@ -1158,13 +1164,21 @@ function setupUIListeners() {
         // If there are new icons in the links, render them (scoped to the modal links)
         if (item.dataset.modalLinks) lucide.createIcons({ root: document.getElementById('item-modal-links') });
 
+        // Remember where the visitor was, then move the focus into the dialog
+        focusBeforeModal = document.activeElement;
+
         // Add the 'is-open' class to trigger the animation
         modal.classList.add('is-open');
+        modalCloseButton.focus();
     };
 
     // Function to close the modal
     const closeModal = () => {
+        if (!modal.classList.contains('is-open')) return;
         modal.classList.remove('is-open');
+        // Give the focus back to the card that opened the dialog
+        if (focusBeforeModal && document.contains(focusBeforeModal)) focusBeforeModal.focus();
+        focusBeforeModal = null;
     };
 
     // Event listener to open the modal (Click)
@@ -1195,6 +1209,20 @@ function setupUIListeners() {
         // Close on 'Escape' key press
         if (e.key === 'Escape' && modal.classList.contains('is-open')) {
             closeModal();
+        }
+        // Keep Tab and Shift+Tab inside the open dialog
+        if (e.key === 'Tab' && modal.classList.contains('is-open')) {
+            const focusable = [...modal.querySelectorAll('a[href], button:not([disabled])')];
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (!modal.contains(document.activeElement) || (e.shiftKey && document.activeElement === first)) {
+                e.preventDefault();
+                (e.shiftKey ? last : first).focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
         }
     });
 
