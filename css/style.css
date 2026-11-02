@@ -1665,6 +1665,10 @@ a:focus-visible, button:focus-visible, .clickable-modal:focus-visible {
   flex-grow: 1;
   scrollbar-width: thin;
   scrollbar-color: #a5b4fc #e0e7ff;
+  /* Fade out the bottom edge so it is clear that more items can be scrolled into view */
+  padding-bottom: 1.5rem;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.5rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.5rem), transparent);
 }
 .dark .news-scroll-container {
   scrollbar-color: #4f46e5 #374151;
