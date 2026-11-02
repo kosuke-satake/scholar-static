@@ -22,10 +22,26 @@ const byName = new Intl.Collator(undefined, { sensitivity: 'base', numeric: true
 
 const SECTIONS = ['layout', 'uiText', 'seo', 'personal', 'news', 'biography', 'skills', 'research', 'projects', 'publications', 'teaching', 'resources', 'contact'];
 
+// The source tree keeps the content in editor/public/data; the deployed site serves it from data/ (the build copies it).
+let dataPath = null;
+const isLocalHost = (host) => /^(localhost|127\.|0\.0\.0\.0|\[::1\]|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(host)
+    || host.endsWith('.localhost') || host.endsWith('.local');
+
+async function resolveDataPath() {
+    if (dataPath) return dataPath;
+    if (isLocalHost(window.location.hostname)) {
+        dataPath = 'editor/public/data';
+    } else {
+        // Any other address (a tunnel, a custom development host, the deployed site): use data/ when it exists.
+        const probe = await fetch(`data/${currentLanguage}/layout.json`, { method: 'HEAD' }).catch(() => null);
+        dataPath = probe && probe.ok ? 'data' : 'editor/public/data';
+    }
+    return dataPath;
+}
+
 async function loadData() {
     try {
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const dataPath = isLocal ? 'editor/public/data' : 'data';
+        const dataPath = await resolveDataPath();
 
         const promises = SECTIONS.map(sec => 
             fetch(`${dataPath}/${currentLanguage}/${sec}.json`)
