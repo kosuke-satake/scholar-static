@@ -14,7 +14,20 @@ It handles:
 */
 
 // --- Language State Management ---
-let currentLanguage = localStorage.getItem('lang') || 'en';
+const SUPPORTED_LANGUAGES = ['en', 'ja'];
+
+// First visit: the first of the browser's preferred languages that the site supports, otherwise English.
+const detectLanguage = () => {
+    for (const tag of navigator.languages || [navigator.language]) {
+        const base = String(tag).toLowerCase().split('-')[0];
+        if (SUPPORTED_LANGUAGES.includes(base)) return base;
+    }
+    return 'en';
+};
+
+// A language the visitor chose before wins over the browser's language.
+const savedLanguage = localStorage.getItem('lang');
+let currentLanguage = SUPPORTED_LANGUAGES.includes(savedLanguage) ? savedLanguage : detectLanguage();
 let portfolioData = null;
 
 // Sorts tags and category names without regard to case, so "iOS" and "macOS" are not pushed behind "Zoology".
