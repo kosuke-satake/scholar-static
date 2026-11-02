@@ -1085,13 +1085,21 @@ function setupUIListeners() {
 
     const setTheme = (theme) => {
         document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.theme = theme;
         sunIcon.classList.toggle('hidden', theme !== 'dark');
         moonIcon.classList.toggle('hidden', theme === 'dark');
     };
 
-    themeToggleBtn.addEventListener('click', () => setTheme(localStorage.theme === 'dark' ? 'light' : 'dark'));
-    setTheme(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+    // Only an explicit choice is stored; until then the page follows the operating system.
+    themeToggleBtn.addEventListener('click', () => {
+        const theme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+        localStorage.theme = theme;
+        setTheme(theme);
+    });
+    const systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    systemDarkQuery.addEventListener('change', (event) => {
+        if (!('theme' in localStorage)) setTheme(event.matches ? 'dark' : 'light');
+    });
+    setTheme(localStorage.theme === 'dark' || (!('theme' in localStorage) && systemDarkQuery.matches) ? 'dark' : 'light');
 
     // --- Language Toggle ---
     const langToggleBtn = document.getElementById('lang-toggle');
