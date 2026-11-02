@@ -2,7 +2,7 @@
   "description": "ジェーン・ドウ博士のScholarStatic - コンピュータサイエンス助教。HCI、機械学習、可視化を研究しています。",
   "ogTitle": "ジェーン・ドウ博士 - ScholarStatic",
   "ogDescription": "ジェーン・ドウ博士のScholarStatic。HCI、機械学習、可視化を研究しています。",
-  "ogImage": "assets/img/og-image.svg",
-  "ogUrl": "#",
+  "ogImage": "assets/img/og-image.png",
+  "ogUrl": "https://scholar-static.pages.dev/",
   "twitterCard": "summary_large_image"
 }

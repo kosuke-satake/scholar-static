@@ -112,6 +112,7 @@ ScholarStatic is designed to be fully customizable because nothing is hidden beh
 
 *   **HTML Structure:** Open `index.html`. You can add new CSS libraries, change the `<head>` tags, or modify the footer structure directly.
 *   **Styling (Tailwind CSS):** Open `css/style.css`. We use a compiled Tailwind file. If you want to change core colors or rebuild the CSS, you can install Tailwind CLI and watch the `tailwind.config.js` file.
+*   **SEO & Social Sharing:** Edit the "SEO & Meta Data" tab in Keystatic. Set `ogUrl` to your site's full address (for example `https://YOUR_SITE.pages.dev/`) and keep `ogImage` a PNG of 1200×630 pixels: link previews need absolute URLs and most platforms do not show SVG. `npm run build` writes the English values into the deployed `index.html` for crawlers; visitors still get the tags for the language they pick.
 *   **Logic & Rendering:** Open `js/main.js`. This is where the magic happens. The `RENDERERS` object controls exactly how the JSON data is converted into HTML. If you want your "Projects" cards to look different, simply edit the `renderCardGrid` function!
 
 ### 🧩 Understanding the "Layout & Navigation" Tab

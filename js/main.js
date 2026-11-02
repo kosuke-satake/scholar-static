@@ -984,7 +984,9 @@ function renderContent() {
         document.querySelector('meta[name="description"]').setAttribute('content', seo.description);
         document.querySelector('meta[property="og:title"]').setAttribute('content', seo.ogTitle);
         document.querySelector('meta[property="og:description"]').setAttribute('content', seo.ogDescription);
-        document.querySelector('meta[property="og:image"]').setAttribute('content', seo.ogImage);
+        // og:image must be an absolute URL: resolve it against the site URL (or this page when ogUrl is not absolute).
+        const ogBase = /^https?:\/\//.test(seo.ogUrl) ? seo.ogUrl : document.baseURI;
+        document.querySelector('meta[property="og:image"]').setAttribute('content', seo.ogImage ? new URL(seo.ogImage, ogBase).href : '');
         document.querySelector('meta[property="og:url"]').setAttribute('content', seo.ogUrl);
         document.querySelector('meta[name="twitter:card"]').setAttribute('content', seo.twitterCard);
         document.title = seo.ogTitle; // Sync title
