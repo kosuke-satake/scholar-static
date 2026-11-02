@@ -24,9 +24,24 @@
   },
   "resources": {
     "viewButton": "表示",
-    "downloadButton": "ダウンロード"
+    "downloadButton": "ダウンロード",
+    "categoriesLabel": "カテゴリ",
+    "typeLabels": [
+      {
+        "type": "PDF",
+        "label": "PDF資料"
+      },
+      {
+        "type": "Presentation",
+        "label": "発表資料"
+      }
+    ]
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "nav": {
+    "openMenu": "メインメニューを開く",
+    "goToTop": "ページ上部へ戻る"
   }
 }
