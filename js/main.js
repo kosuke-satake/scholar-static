@@ -1228,12 +1228,26 @@ function setupUIListeners() {
  * 4. NAVIGATION & SCROLLING
  * ---------------------------------
  */
-function handleNavigation(hash) {
-    const targetPageId = hash ? hash.substring(1) : portfolioData.layout[0].id;
-    const targetPage = document.getElementById(targetPageId);
-    const currentPage = document.querySelector('.page-section.active');
+let navigationTimer = null;
 
-    if (targetPage === currentPage) return;
+function handleNavigation(hash) {
+    // Only the layout sections are pages. An unknown or stale hash (for example "#foo") shows the first page
+    // instead of leaving the site blank.
+    let requestedId = '';
+    try {
+        requestedId = decodeURIComponent((hash || '').substring(1));
+    } catch {
+        // A malformed escape sequence is treated like an unknown hash.
+    }
+    const requested = document.getElementById(requestedId);
+    const targetPage = (requested && requested.classList.contains('page-section') ? requested : null)
+        || document.querySelector('.page-section');
+    if (!targetPage) return;
+    const targetPageId = targetPage.id;
+
+    // A navigation that is still fading out the previous page is superseded by this one.
+    clearTimeout(navigationTimer);
+    navigationTimer = null;
 
     const updateNavLinks = () => {
         document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
@@ -1241,32 +1255,39 @@ function handleNavigation(hash) {
         });
     };
 
-    if (currentPage) {
-        currentPage.style.animation = 'pageFadeOut 0.3s ease-out forwards';
-        setTimeout(() => {
-            currentPage.classList.remove('active');
+    const showTargetPage = (scrollToTop) => {
+        // Never leave two pages active: deactivate every other one.
+        document.querySelectorAll('.page-section.active').forEach(page => {
+            page.classList.remove('active');
             // Force animation reset
-            currentPage.style.animation = 'none';
-            void currentPage.offsetWidth; 
-
-            if (targetPage) {
-                targetPage.classList.add('active');
-                targetPage.style.animation = 'pageFadeIn 0.3s ease-in forwards';
-                // Re-initialize observer for the new page to make animations replay
-                setupIntersectionObserver(targetPage);
-                lucide.createIcons({ root: targetPage }); // Re-render icons for the new active page
-            }
-            updateNavLinks();
-            window.scrollTo(0, 0);
-
-        }, 300);
-    } else if (targetPage) {
-        // Initial page load
+            page.style.animation = 'none';
+        });
+        void targetPage.offsetWidth;
         targetPage.classList.add('active');
         targetPage.style.animation = 'pageFadeIn 0.3s ease-in forwards';
-        updateNavLinks();
+        // Re-initialize observer for the new page to make animations replay
         setupIntersectionObserver(targetPage);
-        lucide.createIcons(); // Render icons on initial load
+        lucide.createIcons({ root: targetPage }); // Re-render icons for the new active page
+        updateNavLinks();
+        if (scrollToTop) window.scrollTo(0, 0);
+    };
+
+    const currentPage = document.querySelector('.page-section.active');
+    if (targetPage === currentPage) {
+        // Already showing this page: undo a fade-out that a superseded navigation may have started.
+        currentPage.style.animation = 'none';
+        updateNavLinks();
+        return;
+    }
+    if (currentPage) {
+        currentPage.style.animation = 'pageFadeOut 0.3s ease-out forwards';
+        navigationTimer = setTimeout(() => {
+            navigationTimer = null;
+            showTargetPage(true);
+        }, 300);
+    } else {
+        // Initial page load
+        showTargetPage(false);
     }
 }
 
