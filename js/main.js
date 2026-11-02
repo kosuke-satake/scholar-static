@@ -33,6 +33,9 @@ let portfolioData = null;
 // Sorts tags and category names without regard to case, so "iOS" and "macOS" are not pushed behind "Zoology".
 const byName = new Intl.Collator(undefined, { sensitivity: 'base', numeric: true }).compare;
 
+// Visitors who ask their system for less motion get instant scrolling.
+const scrollBehavior = () => (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+
 const SECTIONS = ['layout', 'uiText', 'seo', 'personal', 'news', 'biography', 'skills', 'research', 'projects', 'publications', 'teaching', 'resources', 'contact'];
 
 // The source tree keeps the content in editor/public/data; the deployed site serves it from data/ (the build copies it).
@@ -747,7 +750,7 @@ const RENDERERS = {
             
                     window.scrollTo({
                         top: offsetPosition,
-                        behavior: "smooth"
+                        behavior: scrollBehavior()
                     });
                 }
             });
@@ -1404,7 +1407,7 @@ function setupBackToTopButton() {
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth'
+                behavior: scrollBehavior()
             });
         });
     }
