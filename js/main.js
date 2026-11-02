@@ -55,16 +55,31 @@ async function loadData() {
             throw new Error("All data sections failed to load.");
         }
 
-        portfolioData = {};
+        // Replace the data only once the new language has loaded, so a failed switch leaves the page intact.
+        const loaded = {};
         SECTIONS.forEach((sec, i) => {
             if (results[i]) {
-                portfolioData[sec] = (sec === 'layout' && results[i].layout) ? results[i].layout : results[i];
+                loaded[sec] = (sec === 'layout' && results[i].layout) ? results[i].layout : results[i];
             }
         });
+        portfolioData = loaded;
+        return true;
     } catch (error) {
         console.error("Failed to load portfolio data:", error);
-        portfolioData = null;
+        return false;
     }
+}
+
+// Shown instead of a blank page when no content could be loaded (the data files cannot be localized yet).
+function showLoadError() {
+    const main = document.querySelector('main');
+    main.innerHTML = '';
+    const message = document.createElement('p');
+    message.className = 'max-w-2xl mx-auto px-4 py-24 text-center text-gray-700 dark:text-gray-300';
+    message.setAttribute('role', 'alert');
+    message.textContent = 'The page content could not be loaded. Please check your connection and reload the page. / ' +
+        'ページの内容を読み込めませんでした．接続を確認して，再読み込みしてください．';
+    main.appendChild(message);
 }
 
 // Helper to update the language button text
@@ -1066,28 +1081,36 @@ function setupUIListeners() {
     const langToggleBtn = document.getElementById('lang-toggle');
     if (langToggleBtn) {
         updateLangButton(); // Set initial text
+        let languageSwitchInFlight = false;
         langToggleBtn.addEventListener('click', async () => {
-            if (currentLanguage === 'en') {
-                currentLanguage = 'ja';
-            } else {
-                currentLanguage = 'en';
+            // Ignore clicks while a switch is loading: overlapping loads could leave the page in the wrong language.
+            if (languageSwitchInFlight) return;
+            languageSwitchInFlight = true;
+            const previousLanguage = currentLanguage;
+            currentLanguage = currentLanguage === 'en' ? 'ja' : 'en';
+
+            try {
+                if (!(await loadData())) {
+                    // Keep showing the previous language when the new one cannot be loaded.
+                    currentLanguage = previousLanguage;
+                    return;
+                }
+                localStorage.setItem('lang', currentLanguage);
+                updateLangButton();
+
+                // Re-render the entire application with new data
+                renderContent();
+                // Re-initialize icons
+                lucide.createIcons();
+                // Re-apply filters if on a filterable page
+                setupFilterSystem('publication-filters', 'publication-list', 'publication-item-container');
+                setupFilterSystem('projects-filters', 'projects-list', 'project-item-container');
+
+                // Ensure we stay on the same section (or update nav links if names changed)
+                handleNavigation(window.location.hash);
+            } finally {
+                languageSwitchInFlight = false;
             }
-            
-            localStorage.setItem('lang', currentLanguage);
-            updateLangButton();
-            
-            await loadData();
-            
-            // Re-render the entire application with new data
-            renderContent();
-            // Re-initialize icons
-            lucide.createIcons();
-            // Re-apply filters if on a filterable page
-            setupFilterSystem('publication-filters', 'publication-list', 'publication-item-container');
-            setupFilterSystem('projects-filters', 'projects-list', 'project-item-container');
-            
-            // Ensure we stay on the same section (or update nav links if names changed)
-            handleNavigation(window.location.hash);
         });
     }
 
@@ -1341,8 +1364,10 @@ function setupBackToTopButton() {
  * ---------------------------------
  */
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadData();
-    if (!portfolioData) return;
+    if (!(await loadData())) {
+        showLoadError();
+        return;
+    }
     renderContent();
     setupUIListeners();
     setupBackToTopButton();
