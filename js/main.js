@@ -17,6 +17,9 @@ It handles:
 let currentLanguage = localStorage.getItem('lang') || 'en';
 let portfolioData = null;
 
+// Sorts tags and category names without regard to case, so "iOS" and "macOS" are not pushed behind "Zoology".
+const byName = new Intl.Collator(undefined, { sensitivity: 'base', numeric: true }).compare;
+
 const SECTIONS = ['layout', 'uiText', 'seo', 'personal', 'news', 'biography', 'skills', 'research', 'projects', 'publications', 'teaching', 'resources', 'contact'];
 
 async function loadData() {
@@ -185,7 +188,7 @@ const RENDERERS = {
 
         // --- 1. Extract unique categories for filters ---
         const years = [...new Set(data.items.map(item => item.year))].sort((a, b) => b - a);
-        const tags = [...new Set(data.items.flatMap(item => item.tags))].sort();
+        const tags = [...new Set(data.items.flatMap(item => item.tags))].sort(byName);
 
         // --- 2. Generate HTML for filter UI ---
         const filtersContainer = document.createElement('div');
@@ -394,7 +397,7 @@ const RENDERERS = {
 
         if (data.title === "Projects") {
             const uiText = portfolioData.uiText.projects; // Get UI text for projects
-            const tags = [...new Set(data.items.flatMap(item => item.tags))].sort();
+            const tags = [...new Set(data.items.flatMap(item => item.tags))].sort(byName);
             const filtersContainer = document.createElement('div');
             filtersContainer.id = `${sectionId}-filters`;
             filtersContainer.className = 'flex flex-col sm:flex-row flex-wrap gap-4 items-center mb-8 fade-in-on-scroll';
@@ -579,7 +582,7 @@ const RENDERERS = {
             return acc;
         }, {});
 
-        const types = Object.keys(groupedItems).sort();
+        const types = Object.keys(groupedItems).sort(byName);
 
         // Main Layout Container (Grid)
         const container = document.createElement('div');
