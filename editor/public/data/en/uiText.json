@@ -42,6 +42,7 @@
   },
   "nav": {
     "openMenu": "Open main menu",
-    "goToTop": "Go to top"
+    "goToTop": "Go to top",
+    "switchLanguage": "Switch to Japanese"
   }
 }

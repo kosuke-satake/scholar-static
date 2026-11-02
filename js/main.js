@@ -962,6 +962,12 @@ function renderContent() {
     // Accessible labels that live in index.html (the English text there is the fallback)
     const navText = portfolioData.uiText.nav;
     if (navText) {
+        const langButton = document.getElementById('lang-toggle');
+        if (navText.switchLanguage && langButton) {
+            // The button shows the current language; its name says what a click does.
+            langButton.setAttribute('aria-label', navText.switchLanguage);
+            langButton.setAttribute('title', navText.switchLanguage);
+        }
         const menuButton = document.getElementById('mobile-menu-button');
         if (navText.openMenu) {
             menuButton.setAttribute('aria-label', navText.openMenu);
