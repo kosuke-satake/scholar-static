@@ -387,15 +387,17 @@ const RENDERERS = {
     },
 
     /**
-     * Renders a grid of cards (Research)
+     * Renders a grid of cards (Research, Projects)
      * @param {object} data - An object with `items` array.
+     * @param {object} section - The layout entry (`id`, `nav`, `renderer`, `dataKey`) of this section.
      * @returns {string} - The HTML string for the card grid content.
      */
-    renderCardGrid: (data) => {
+    renderCardGrid: (data, section) => {
         const container = document.createElement('div');
-        const sectionId = data.title.toLowerCase();
+        // Use the layout id, not the displayed title: titles are translated and edited freely.
+        const sectionId = section.id;
 
-        if (data.title === "Projects") {
+        if (section.id === 'projects') {
             const uiText = portfolioData.uiText.projects; // Get UI text for projects
             const tags = [...new Set(data.items.flatMap(item => item.tags))].sort(byName);
             const filtersContainer = document.createElement('div');
@@ -879,7 +881,7 @@ function renderContent() {
             const contentWrapper = document.createElement('div');
             contentWrapper.className = 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
 
-            const renderedContent = renderer(sectionData);
+            const renderedContent = renderer(sectionData, sectionInfo);
 
             if (sectionInfo.renderer !== 'renderHero') {
                  // Add title and subtitle for non-hero sections
