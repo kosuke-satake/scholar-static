@@ -43,6 +43,7 @@
   "nav": {
     "openMenu": "メインメニューを開く",
     "goToTop": "ページ上部へ戻る",
-    "switchLanguage": "英語に切り替える"
+    "switchLanguage": "英語に切り替える",
+    "closeDialog": "閉じる"
   }
 }

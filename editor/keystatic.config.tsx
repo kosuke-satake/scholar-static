@@ -96,6 +96,7 @@ const uiTextSchema = {
     nav: fields.object({
         openMenu: fields.text({ label: 'Open Menu (accessible label)' }),
         goToTop: fields.text({ label: 'Go to Top (accessible label)' }),
+        closeDialog: fields.text({ label: 'Close Dialog (accessible label)' }),
         switchLanguage: fields.text({ label: 'Switch Language (accessible label)' })
     }),
     footer: fields.object({
