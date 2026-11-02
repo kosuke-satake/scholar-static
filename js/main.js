@@ -820,6 +820,9 @@ const generateLinksHTML = (links, isClickable) => {
  * ---------------------------------
  */
 function renderContent() {
+    // Keep the document language in sync with the selected language (screen readers, CJK font selection, hyphenation).
+    document.documentElement.lang = currentLanguage;
+
     const mainContainer = document.querySelector('main');
     const navContainer = document.getElementById('desktop-nav-links');
     const mobileNavContainer = document.getElementById('mobile-nav-links');
