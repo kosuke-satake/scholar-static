@@ -4,7 +4,7 @@ MAIN JAVASCRIPT FILE
 =================================
 This file contains the core JavaScript functionality for the portfolio website.
 It handles:
-1.  Dynamic content rendering from js/data.js
+1.  Dynamic content rendering from the JSON files in editor/public/data (data/ when deployed)
 2.  Mobile menu toggling
 3.  Dark mode toggling
 4.  Single-page navigation logic
@@ -113,7 +113,7 @@ const updateLangButton = () => {
  * ---------------------------------
  * These functions generate HTML for different types of sections.
  * They are called by the main rendering engine based on the `renderer`
- * property specified in the `layout` array in `js/data.js`.
+ * property specified in the `layout` data (editor/public/data/<lang>/layout.json).
  */
 const RENDERERS = {
     /**
